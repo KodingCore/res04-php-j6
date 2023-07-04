@@ -4,7 +4,7 @@ require "partials/_header.phtml";
 require "partials/_footer.phtml";
 
 if(isset($template)){
-    require "../templates/".$template."/".$template.".phml";
+    require $template."/".$template.".phtml";
 }
 
 ?>
@@ -14,7 +14,7 @@ if(isset($template)){
 <head>
     <meta charset="UTF-8">
     <title>Layout</title>
-    <link rel="stylesheet" href="../assets/styles/css/style.css" type="text/css" />
+    <!--<link rel="stylesheet" href="../assets/styles/css/style.css" type="text/css" />-->
 </head>
 <body>
     
