@@ -1,9 +1,5 @@
 <?php
 
-
-
-
-
 function loadUser(string $email) : User
 {
     $host = "db.3wa.io";
@@ -19,13 +15,14 @@ function loadUser(string $email) : User
         $log,
         $password
     );
-    if (isset($_POST['email'])) {
+    if (isset($_POST['login'])) {
         $query = $db->prepare('SELECT * FROM users WHERE email = :email');
         $parameters = [
-            'email' => $_POST['email']
+            'email' => $_POST['login']
         ];
         $query->execute($parameters);
         $user = $query->fetch(PDO::FETCH_ASSOC);
+        return new User($user['first_name'], $user['last_name'], $user['email'], $user['password']);
     }
 }
 
@@ -44,7 +41,9 @@ function saveUser(User $user) : User
         $log,
         $password
     );
-    if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['email']) && isset($_POST['password'])) {
+    
+    if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['password'])) {
+        
         $query = $db->prepare('INSERT INTO users(first_name, last_name, email, password) VALUES(:first_name, :last_name, :email, :password)');
         $parameters = [
             'first_name' => $user->getFirstName(),
@@ -53,18 +52,17 @@ function saveUser(User $user) : User
             'password' => $user->getPassword()
         ];
         $query->execute($parameters);
-        $user = $query->fetch(PDO::FETCH_ASSOC);
+
+        if (isset($_POST['firstname'])) {
+            $query = $db->prepare('SELECT * FROM `users` WHERE first_name = :first_name LIMIT 1');
+            $parameters = [
+                'first_name' => $_POST['firstname']
+            ];
+            $query->execute($parameters);
+            $user = $query->fetch(PDO::FETCH_ASSOC);
+            return new User($user['first_name'], $user['last_name'], $user['email'], $user['password']);
+        }
     }
-    if (isset($_GET['id'])) {
-        $query = $db->prepare('SELECT * FROM users WHERE id = :id');
-        $parameters = [
-            'id' => $_GET['id']
-        ];
-        $query->execute($parameters);
-        $user = $query->fetch(PDO::FETCH_ASSOC);
-        print_r($user->getFirstName());
-    }
-    return $user;
 }
 
 ?>

@@ -6,7 +6,8 @@ function checkRoute(string $route) : void
         require "./pages/login.php";
     }else if($route === "creer-un-compte"){
         require "./pages/register.php";
-    }else if($route === "mon-compte"){
+    }else if($route === "mon-compte" && isset($_SESSION['user'])){
+        
         require "./pages/account.php";
     }else{
         require "./pages/homepage.php";

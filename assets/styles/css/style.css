@@ -1,5 +1,51 @@
-html ul {
+html {
+  margin: 0;
+  padding: 0;
+}
+html body {
+  margin: 0;
+  padding: 0;
+}
+html body h1 {
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 150, 0.5);
+}
+html body nav {
+  position: absolute;
+}
+html body nav ul {
+  display: flex;
   list-style-type: none;
+  margin-left: 35vw;
+}
+html body nav ul li {
+  margin-left: 20px;
+}
+html body nav ul li a {
+  color: black;
+  font-size: 1.25rem;
+}
+html body form {
+  position: absolute;
+  top: 8rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: calc(50vw - 75px);
+}
+html body form label, html body form input:last-child {
+  margin-top: 1rem;
+}
+html body form input {
+  width: 150px;
+}
+html body #nav-header {
+  top: 2rem;
+}
+html body #nav-footer {
+  padding: 1.5rem;
+  width: 100vw;
+  background-color: rgba(0, 0, 150, 0.5);
+  bottom: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */

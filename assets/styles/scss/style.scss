@@ -1,7 +1,55 @@
+$input-width: 150px;
+
 html{
-    ul{
-        list-style-type: none;
+    margin: 0;
+    padding: 0;
+    body{
+        margin: 0;
+        padding: 0;
+        h1{
+            padding: 1.5rem;
+            background-color: rgba(0,0,150,.5);
+        }
+        nav{
+            position: absolute;
+            
+            ul{
+                display: flex;
+                list-style-type: none;
+                margin-left: 35vw;
+                li{
+                    margin-left: 20px;
+                    a{
+                        color: black;
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+        }
+        form{
+            position: absolute;
+            top: 8rem;
+            display: flex;
+            flex-direction: column;
+            margin-left: calc(100vw / 2 - $input-width / 2);
+            label, input:last-child{
+                margin-top: 1rem;
+            }
+            input{
+                width: $input-width;
+            }
+        }
+        
+        #nav-header{
+            top: 2rem;
+            
+        }
+        #nav-footer{
+            padding: 1.5rem;
+            width: 100vw;
+            background-color: rgba(0,0,150,.5);
+            bottom: 2rem;
+        }
     }
-    
     
 }
